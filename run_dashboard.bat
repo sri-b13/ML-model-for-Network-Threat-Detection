@@ -1,0 +1,9 @@
+@echo off
+echo Starting Network Security ML Dashboard...
+echo.
+echo Installing required packages (if needed)...
+pip install -r requirements.txt
+echo.
+echo Starting Streamlit application...
+streamlit run app.py
+pause
