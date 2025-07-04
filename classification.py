@@ -15,11 +15,11 @@ import re
 from urllib.parse import urlparse
 
 
-#Loading the dataset downloaded in the foler 
+#Loading the dataset downloaded in the folder 
 file_path = 'malicious_phish.csv'
 df = pd.read_csv(file_path) #reading the file path for the dataset
 
-print(f"Dataset loaded successfully!")
+print(f"Dataset loaded successfully")
 #tabulating the data
 print(f"Dataset shape: {df.shape}")
 print(f"Columns: {df.columns.tolist()}")
@@ -68,52 +68,40 @@ def extract_url_features(url):
     
     return features
 
-# Extract features for all URLs
+#feature extraction
 print("\nExtracting URL features...")
 url_features = []
 for url in df['url']:
     url_features.append(extract_url_features(str(url)))
-
-# Convert to DataFrame
 feature_df = pd.DataFrame(url_features)
 
-# Combine with original data
+#variable allocation
 X = feature_df
 y = df['type']
-
-# Encode labels
 label_encoder = LabelEncoder()
 y_encoded = label_encoder.fit_transform(y)
 
 print(f"\nFeatures extracted: {X.columns.tolist()}")
 print(f"Feature matrix shape: {X.shape}")
 
-# Split data into training and testing sets
+#making training and testing variables 
 X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.3, random_state=42, stratify=y_encoded)
 
 print(f"\nTraining set shape: {X_train.shape}")
 print(f"Test set shape: {X_test.shape}")
 
-# Initialize the Random Forest model
+#create a rndmfrst model
 clf = RandomForestClassifier(n_estimators=100, random_state=42, max_depth=10)
 
-print("\nTraining the Random Forest model...")
-# Train the model
+print("\nTraining the Random Forest model")
 clf.fit(X_train, y_train)
-
-# Make predictions
 y_pred = clf.predict(X_test)
 y_pred_proba = clf.predict_proba(X_test)
-
-# Calculate accuracy
 accuracy = accuracy_score(y_test, y_pred)
 print(f"\nModel Accuracy: {accuracy:.4f}")
-
-# Performance metrics
 print("\nClassification Report:")
 print(classification_report(y_test, y_pred, target_names=label_encoder.classes_))
 
-# Confusion Matrix
 cm = confusion_matrix(y_test, y_pred)
 print("\nConfusion Matrix:")
 print(cm)
@@ -159,7 +147,6 @@ plt.title('Confusion Matrix')
 plt.ylabel('True Label')
 plt.xlabel('Predicted Label')
 
-#Feature Importance
 plt.subplot(2, 3, 4)
 top_features = feature_importance.head(8)
 plt.barh(range(len(top_features)), top_features['importance'])
