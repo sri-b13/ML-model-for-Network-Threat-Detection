@@ -84,37 +84,7 @@ Using **Streamlit** to,
 ## Conclusion
 This project details a holistic, AI-driven framework for network security that automates the detection and classification of network traffic and threats, particularly focusing on web application attacks like SQLi and XSS. The system is designed for high accuracy and real-time performance, leveraging a hybrid of rule-based, machine learning, and deep learning techniques. It provides practical insights into model selection, feature engineering, performance benchmarking, and deployment in real-world environments such as WAFs1. This aligns with modern network security needs for scalability, adaptability, and privacy-preserving analysis in the face of increasingly sophisticated and encrypted cyber threats.
 
-    +---------------------+
-| Load Dataset        |
-| (malicious_phish.csv) |
-+---------------------+
-          |
-          v
-+---------------------+
-| Feature Extraction  |
-| - URL Features      |
-| - Label Encoding    |
-+---------------------+
-          |
-          v
-+---------------------+
-| Training-Test Split |
-| (70% train, 30% test)|
-+---------------------+
-          |
-          v
-+-----------------------------+
-| Random Forest Classifier    |
-| - Train on Features         |
-| - Predict on Test Set       |
-+-----------------------------+
-          |
-          v
-+---------------------+
-| Evaluate Model      |
-| - Accuracy          |
-| - Confusion Matrix  |
-| - Feature Importance|
+ 
 +---------------------+
           |
           v
