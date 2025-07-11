@@ -54,9 +54,6 @@ To build an AI system that,
 - Operates in **real time** 
 - Maintains **high accuracy**, **low latency**, and **privacy compliance**
 
-Research papers studied
-[ISCX VPN-nonVPN paper](https://ieeexplore.ieee.org/document/7095802)
-[Deep Packet paper (University of Brescia)](https://arxiv.org/abs/1709.02656)
 
 ### **Feature Extraction**
 Extract features like:
